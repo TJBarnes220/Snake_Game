@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Snake Game</string>
+    <string name="UpButton">Up</string>
+    <string name="DownButton">Down</string>
+    <string name="LeftButton">Left</string>
+    <string name="RightButton">Right</string>
+    <string name="StartButton">Start</string>
+    <string name="HighScoreButton">High Scores</string>
+    <string name="SettingsButton">Settings</string>
+    <string name="HighScoresText">Score Board</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="GameScoreText">Score: 1</string>
+    <string name="ScoreBoardBackButton">Back</string>
+    <string name="SubmitRetryButton">Retry</string>
+    <string name="SubmitLeaveButton">Leave</string>
+    <string name="SubmitButton">Submit</string>
+    <string name="SubmitHint">Name</string>
+</resources>
