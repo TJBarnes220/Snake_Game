@@ -67,7 +67,7 @@ public class GameFragment extends Fragment {
         public void run() {
             traverse();
             gamePad.setDelay(false);
-            if(continueToRun == true){
+            if(continueToRun){
                 mHandler.postDelayed(mRunnable, mSampleDurationTime);
             }
 
@@ -139,6 +139,7 @@ public class GameFragment extends Fragment {
         gameOverText.performClick();
         Bundle bundle = new Bundle();
         bundle.putInt("Score",snek.getSize());
+        //Navigation.findNavController(gameOverText).popBackStack();
         Navigation.findNavController(gameOverText).navigate((R.id.action_gameFragment_to_submit),bundle);
     }
 
@@ -174,7 +175,7 @@ public class GameFragment extends Fragment {
     public void placePellet(){
         Random random = new Random();
         boolean acceptableSpot = false;
-        while(acceptableSpot == false) {
+        while(!acceptableSpot) {
             int x = random.nextInt(board.length);
             int y = random.nextInt(board[0].length);
             if(board[x][y].getType() == TileType.Empty){

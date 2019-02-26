@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.travis.snakegame.HighScoreComponents.Score;
 import com.example.travis.snakegame.HighScoreComponents.ScoreData;
 
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 
@@ -25,7 +26,7 @@ import androidx.navigation.Navigation;
  * Use the {@link SubmitFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SubmitFragment extends Fragment {
+public class SubmitFragment extends Fragment implements OnBackPressedListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,7 +39,7 @@ public class SubmitFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     Button retryBtn;
-    Button leaveBtn;
+    //Button leaveBtn;
     Button submitBtn;
     TextView title;
     EditText submission;
@@ -82,12 +83,17 @@ public class SubmitFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_submit, container, false);
         retryBtn = view.findViewById(R.id.submit_retry_button);
-        retryBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_submit_to_gameFragment));
+        retryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickRetry();
+            }
+        });
 
         title = view.findViewById(R.id.temp_score_text);
 
-        leaveBtn = view.findViewById(R.id.submit_leave_button);
-        leaveBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_submit_to_menuFragment));
+       // leaveBtn = view.findViewById(R.id.submit_leave_button);
+        //leaveBtn.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_submit_to_menuFragment));
 
         submission = view.findViewById(R.id.submission_text);
         submitBtn = view.findViewById(R.id.submit_button);
@@ -110,6 +116,13 @@ public class SubmitFragment extends Fragment {
         submission.setVisibility(View.GONE);
         submitBtn.setVisibility(View.GONE);
     }
+
+    public void clickRetry(){
+        NavController controller = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
+        controller.popBackStack();
+    }
+
+
 
 
     @Override
@@ -141,6 +154,13 @@ public class SubmitFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onBackPressed() {
+        NavController controller = Navigation.findNavController(this.getActivity(), R.id.nav_host_fragment);
+        controller.popBackStack();
+        controller.popBackStack();
     }
 
     /**

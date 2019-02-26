@@ -44,7 +44,7 @@ public class ScoreBoardFragment extends Fragment {
 
     TextView title;
     RecyclerView list;
-    Button back;
+    //Button back;
     ArrayList<Score> scores;
 
     public ScoreBoardFragment() {
@@ -85,8 +85,8 @@ public class ScoreBoardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_score_board, container, false);
         title = view.findViewById(R.id.score_board_title);
         list = view.findViewById(R.id.score_list);
-        back = view.findViewById(R.id.score_board_back_button);
-        back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_scoreBoardFragment_to_menuFragment));
+       // back = view.findViewById(R.id.score_board_back_button);
+        //back.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_scoreBoardFragment_to_menuFragment));
         updateList();
         return view;
     }
